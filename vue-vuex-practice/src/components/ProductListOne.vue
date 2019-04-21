@@ -1,7 +1,7 @@
 <template>
     <div id="product-list-one">
         <h2>Product List One</h2>
-        <v-btn color="danger" @click="reducePrice">Reduce Price</v-btn>
+        <v-btn color="danger" @click="reducePrice(4)">Reduce Price</v-btn>
         <ul>
             <li v-for="(product, index) in saleProducts" :key="index">
                 <span class="name">{{ product.name }}</span>
@@ -21,11 +21,18 @@ export default {
             return this.$store.getters.saleProducts;
         }
     },methods:{
-        reducePrice(){
+        reducePrice(amount){
+
+            // vanilla Vue js
             /* this.$store.state.products.forEach(product=>{
                 product.price -= 1;
             }); */
-            this.$store.commit('reducePrice');
+
+            // call mutations in Vuex
+            // this.$store.commit('reducePrice');
+
+            //call Action in Vuex
+            this.$store.dispatch('reducePrice', amount);
         }
     }
 }
