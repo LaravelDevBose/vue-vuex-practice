@@ -1,6 +1,7 @@
 <template>
     <div id="product-list-one">
         <h2>Product List One</h2>
+        <v-btn color="danger" @click="reducePrice">Reduce Price</v-btn>
         <ul>
             <li v-for="(product, index) in saleProducts" :key="index">
                 <span class="name">{{ product.name }}</span>
@@ -18,6 +19,13 @@ export default {
         },
         saleProducts(){
             return this.$store.getters.saleProducts;
+        }
+    },methods:{
+        reducePrice(){
+            /* this.$store.state.products.forEach(product=>{
+                product.price -= 1;
+            }); */
+            this.$store.commit('reducePrice');
         }
     }
 }

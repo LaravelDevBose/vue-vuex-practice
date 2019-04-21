@@ -17,14 +17,18 @@ export default {
             return this.$store.state.products
         },
          saleProducts(){
-             var saleProducts = this.$store.state.products.map(product=>{
-                 return {
-                     name:'## '+ product.name +' ##',
-                     price: product.price *1.5,
-                 }
-             });
 
-             return saleProducts;
+            //with out vuex
+             // var saleProducts = this.$store.state.products.map(product=>{
+             //     return {
+             //         name:'## '+ product.name +' ##',
+             //         price: product.price *1.5,
+             //     }
+             // });
+             //
+             // return saleProducts;
+
+             return this.$store.getters.saleProducts; //using vuex
          }
     }
    
