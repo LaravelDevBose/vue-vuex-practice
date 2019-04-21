@@ -28,10 +28,10 @@ export default {
                 product.price -= 1;
             }); */
 
-            // call mutations in Vuex
+            // call mutations
             // this.$store.commit('reducePrice');
 
-            //call Action in Vuex
+            //call Action
             this.$store.dispatch('reducePrice', amount);
         }
     }

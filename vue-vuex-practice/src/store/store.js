@@ -33,7 +33,7 @@ export const store = new Vuex.Store({
     },
     actions:{
         reducePrice:(context,payload)=>{
-            // alert('reduce Price :'+ payload);
+            
             if(confirm('Reduce Price:' + payload)){
                 setTimeout(function () {
                     context.commit('reducePrice', payload);
