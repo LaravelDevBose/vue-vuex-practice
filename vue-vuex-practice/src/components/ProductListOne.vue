@@ -12,28 +12,45 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
+    import {mapGetters} from 'vuex';
+
 export default {
     computed:{
         products(){
             return this.$store.state.products
         },
-        saleProducts(){
-            return this.$store.getters.saleProducts;
-        }
+        // vanilla vuex call getters
+        // saleProducts(){
+        //     return this.$store.getters.saleProducts;
+        // }
+
+
+        //vuex map function use
+        ...mapGetters([
+           'saleProducts',
+        ])
     },methods:{
-        reducePrice(amount){
 
-            // vanilla Vue js
-            /* this.$store.state.products.forEach(product=>{
-                product.price -= 1;
-            }); */
+        //vuex map function use
+        ...mapActions([
+            'reducePrice',
+        ])
 
-            // call mutations
-            // this.$store.commit('reducePrice');
-
-            //call Action
-            this.$store.dispatch('reducePrice', amount);
-        }
+        //Vanilla call Vuex
+        // reducePrice(amount){
+        //
+        //     // vanilla Vue js
+        //     /* this.$store.state.products.forEach(product=>{
+        //         product.price -= 1;
+        //     }); */
+        //
+        //     // call mutations
+        //     // this.$store.commit('reducePrice');
+        //
+        //     //call Action
+        //     this.$store.dispatch('reducePrice', amount);
+        // }
     }
 }
 </script >
